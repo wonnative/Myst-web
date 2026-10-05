@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mystery Birthday Box 🎁</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- BACKGROUND -->
+    <!-- ========================= -->
+
+    <div class="background-shapes">
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>♡</span>
+        <span>✧</span>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- START -->
+    <!-- ========================= -->
+
+    <section id="startScreen" class="screen active">
+
+        <div class="game-card">
+
+            <div class="mystery-box small-box">
+                📦
+            </div>
+
+            <span class="system-label">
+                UNKNOWN OBJECT DETECTED
+            </span>
+
+            <h1>
+                A Mystery Box
+            </h1>
+
+            <p>
+                Someone left a mysterious box for you.
+            </p>
+
+            <p class="subtle">
+                Unfortunately... it's locked.
+            </p>
+
+            <button onclick="startGame()">
+                ACCEPT THE BOX
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- INTRO -->
+    <!-- ========================= -->
+
+    <section id="intro" class="screen">
+
+        <div class="game-card">
+
+            <div class="warning">
+                ⚠️
+            </div>
+
+            <span class="system-label">
+                SECURITY SYSTEM
+            </span>
+
+            <h2>
+                BOX LOCKED
+            </h2>
+
+            <p>
+                This box contains something special.
+            </p>
+
+            <div class="security-list">
+
+                <div>
+                    🔒 Security Level 01
+                </div>
+
+                <div>
+                    🔒 Security Level 02
+                </div>
+
+                <div>
+                    🔒 Security Level 03
+                </div>
+
+                <div>
+                    🔒 Security Level 04
+                </div>
+
+            </div>
+
+            <p class="subtle">
+                Complete all challenges to unlock the box.
+            </p>
+
+            <button onclick="showScreen('game1'); startCakeGame()">
+                BEGIN SECURITY TEST →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- GAME 1 -->
+    <!-- CATCH THE CAKE -->
+    <!-- ========================= -->
+
+    <section id="game1" class="screen">
+
+        <div class="game-card wide-card">
+
+            <span class="level">
+                SECURITY LEVEL 01
+            </span>
+
+            <h2>
+                🎂 Catch The Birthday Cake
+            </h2>
+
+            <p>
+                The cake is falling!
+            </p>
+
+            <p class="subtle">
+                Move the box and catch it before it falls!
+            </p>
+
+            <div class="score">
+                CAUGHT:
+                <span id="cakeScore">0</span> / 5
+            </div>
+
+            <div
+                class="catch-game"
+                id="catchGame"
+            >
+
+                <div
+                    id="fallingCake"
+                    class="falling-cake"
+                >
+                    🎂
+                </div>
+
+                <div
+                    id="catchBox"
+                    class="catch-box"
+                >
+                    📦
+                </div>
+
+            </div>
+
+            <p
+                id="game1Message"
+                class="game-message"
+            ></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- GAME 2 -->
+    <!-- REFLEX -->
+    <!-- ========================= -->
+
+    <section id="game2" class="screen">
+
+        <div class="game-card wide-card">
+
+            <span class="level">
+                SECURITY LEVEL 02
+            </span>
+
+            <h2>
+                ⚡ Test Your Reflex
+            </h2>
+
+            <p>
+                Click the ⭐ as fast as you can.
+            </p>
+
+            <p class="subtle">
+                Don't click the ❌!
+            </p>
+
+            <div class="reflex-grid">
+
+                <button onclick="wrongReflex(this)">❌</button>
+                <button onclick="clickStar(this)">⭐</button>
+                <button onclick="wrongReflex(this)">❌</button>
+
+                <button onclick="wrongReflex(this)">❌</button>
+                <button onclick="wrongReflex(this)">❌</button>
+                <button onclick="clickStar(this)">⭐</button>
+
+                <button onclick="clickStar(this)">⭐</button>
+                <button onclick="wrongReflex(this)">❌</button>
+                <button onclick="wrongReflex(this)">❌</button>
+
+            </div>
+
+            <div class="score">
+                STARS:
+                <span id="starScore">0</span> / 5
+            </div>
+
+            <p id="game2Message" class="game-message"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- GAME 3 -->
+    <!-- MEMORY -->
+    <!-- ========================= -->
+
+    <section id="game3" class="screen">
+
+        <div class="game-card">
+
+            <span class="level">
+                SECURITY LEVEL 03
+            </span>
+
+            <h2>
+                🧠 Memory Sequence
+            </h2>
+
+            <p id="memoryInstruction">
+                Remember the order!
+            </p>
+
+            <div
+                id="memoryObjects"
+                class="memory-objects"
+            >
+                🎈 🍰 🎁 🧸
+            </div>
+
+            <div
+                id="memoryQuestion"
+                class="memory-question hidden"
+            >
+
+                <p>
+                    Now repeat the sequence!
+                </p>
+
+                <div class="memory-options">
+
+                    <button onclick="memoryAnswer('🎈')">
+                        🎈
+                    </button>
+
+                    <button onclick="memoryAnswer('🍰')">
+                        🍰
+                    </button>
+
+                    <button onclick="memoryAnswer('🎁')">
+                        🎁
+                    </button>
+
+                    <button onclick="memoryAnswer('🧸')">
+                        🧸
+                    </button>
+
+                </div>
+
+                <p
+                    id="memoryProgress"
+                    class="game-message"
+                >
+                    0 / 4
+                </p>
+
+            </div>
+
+            <p
+                id="game3Message"
+                class="game-message"
+            ></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- GAME 4 -->
+    <!-- SECRET CODE -->
+    <!-- ========================= -->
+
+    <section id="game4" class="screen">
+
+        <div class="game-card">
+
+            <span class="level">
+                SECURITY LEVEL 04
+            </span>
+
+            <h2>
+                🔐 Final Lock
+            </h2>
+
+            <p>
+                Find the secret code.
+            </p>
+
+            <div class="clue">
+
+                <span>HINT</span>
+
+                <p>
+                    It's the number of letters
+                    in the word:
+                </p>
+
+                <strong>
+                    BIRTHDAY
+                </strong>
+
+            </div>
+
+            <input
+                type="number"
+                id="codeInput"
+                placeholder="Enter code"
+            >
+
+            <button onclick="checkCode()">
+                UNLOCK 🔓
+            </button>
+
+            <p
+                id="game4Message"
+                class="game-message"
+            ></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- ALL UNLOCKED -->
+    <!-- ========================= -->
+
+    <section id="unlocked" class="screen">
+
+        <div class="game-card">
+
+            <div class="unlock-icon">
+                🔓
+            </div>
+
+            <span class="system-label">
+                ALL SYSTEMS CLEARED
+            </span>
+
+            <h1>
+                BOX UNLOCKED
+            </h1>
+
+            <p>
+                You defeated every security system.
+            </p>
+
+            <p class="subtle">
+                But there's one final step...
+            </p>
+
+            <button onclick="prepareShake()">
+                OPEN THE BOX →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- SHAKE -->
+    <!-- ========================= -->
+
+    <section id="shakeScreen" class="screen">
+
+        <div class="game-card">
+
+            <div class="phone">
+                📱
+            </div>
+
+            <span class="system-label">
+                FINAL SECURITY
+            </span>
+
+            <h2>
+                Shake The Box!
+            </h2>
+
+            <p>
+                Shake your phone
+                <strong>3 times</strong>
+                to open it.
+            </p>
+
+            <div class="shake-counter">
+
+                <span id="shake1">○</span>
+                <span id="shake2">○</span>
+                <span id="shake3">○</span>
+
+            </div>
+
+            <div
+                id="shakeStatus"
+                class="shake-status"
+            >
+                Waiting...
+            </div>
+
+            <button
+                id="motionButton"
+                onclick="enableMotion()"
+            >
+                ENABLE SHAKE
+            </button>
+
+            <p class="subtle">
+                If you're on a computer,
+                use the button below.
+            </p>
+
+            <button
+                class="secondary-button"
+                onclick="simulateShake()"
+            >
+                Shake manually
+            </button>
+
+        </div>
+
+    </section>
+
+<!-- ========================= -->
+<!-- EPIC BOX OPENING -->
+<!-- ========================= -->
+
+<section id="boxOpening" class="screen">
+
+    <div class="box-opening-container">
+
+        <!-- FLASH -->
+        <div
+            class="boom-flash"
+            id="boomFlash"
+        ></div>
+
+
+        <!-- ========================= -->
+        <!-- BIG BOX -->
+        <!-- ========================= -->
+
+        <div
+            class="big-opening-box"
+            id="bigOpeningBox"
+        >
+
+            <!-- LIGHT -->
+            <div class="box-glow"></div>
+
+
+            <!-- BOX LID -->
+            <div
+                class="box-top"
+                id="boxTop"
+            >
+                🎁
+            </div>
+
+
+            <!-- BOX BODY -->
+            <div class="box-bottom"></div>
+
+
+            <!-- HEART COMING OUT -->
+            <div class="box-content">
+                💖
+            </div>
+
+        </div>
+
+        <div
+            class="birthday-letter"
+            id="birthdayLetter"
+        >
+
+            <div class="letter-paper">
+
+                <div class="letter-decoration">
+                    ♡
+                </div>
+
+                <h2>
+                    To You 💌
+                </h2>
+
+                <p>
+                    Happy Birthday! 🎂
+                </p>
+
+                <p>
+                    You finally unlocked
+                    the mystery box...
+                </p>
+
+                <p>
+                    And yes...
+                    there is still
+                    something waiting
+                    for you. ❤️
+                </p>
+
+                <div class="letter-heart">
+                    ❤️
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- BIRTHDAY LETTER -->
+        <!-- ========================= -->
+
+        
+
+
+        <!-- ========================= -->
+        <!-- BOOM TEXT -->
+        <!-- ========================= -->
+
+        <div
+            id="boomText"
+            class="mega-boom"
+        >
+            READY...?
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- CONFETTI -->
+        <!-- ========================= -->
+
+        <div
+            id="confettiContainer"
+            class="confetti-container"
+        ></div>
+
+    </div>
+
+</section>
+    <!-- ========================= -->
+    <!-- BIRTHDAY -->
+    <!-- ========================= -->
+
+    <section id="birthday" class="screen">
+
+        <div class="confetti-container"></div>
+
+        <div class="birthday-card">
+
+            <div class="party">
+                🎉 🎂 🎉
+            </div>
+
+            <span class="system-label">
+                MISSION COMPLETE
+            </span>
+
+            <h1>
+                HAPPY<br>
+                BIRTHDAY! 🎂
+            </h1>
+
+            <p class="birthday-name">
+                REINHARD ❤️
+            </p>
+
+            <div class="birthday-message">
+
+                <p>
+                    Congratulations!
+                </p>
+
+                <p>
+                    You just completed
+                    <strong>
+                        4 completely unnecessary
+                        security systems
+                    </strong>
+                    just to open a box.
+                </p>
+
+                <p>
+                    And yes...
+                    I could've just given you
+                    the present normally.
+                </p>
+
+                <p>
+                    But where's the fun in that? 😂
+                </p>
+
+                <p class="love-message">
+                    Anyway,
+                    happy birthday to my favorite person. ❤️
+                </p>
+
+            </div>
+
+            <button onclick="showSurprise()">
+                WAIT... THERE'S MORE 🎁
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- FINAL SURPRISE -->
+    <!-- ========================= -->
+
+    <section id="surprise" class="screen">
+
+        <div class="game-card">
+
+            <div class="big-gift">
+                🎁
+            </div>
+
+            <h1>
+                One More Thing...
+            </h1>
+
+            <p>
+                I hope this year brings you
+                lots of happiness,
+                good food,
+                good memories,
+                and everything you deserve.
+            </p>
+
+            <p class="love-message">
+                Happy birthday, Reinhard. ❤️
+            </p>
+
+            <div class="final-emojis">
+                🎂 ❤️ 🎉 🥳 ❤️ 🎁
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
